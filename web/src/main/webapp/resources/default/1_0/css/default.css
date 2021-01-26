@@ -1,0 +1,163 @@
+body{
+    background-color: #f7f5f3 !important;
+    line-height: 1 !important;
+}
+* {
+    -webkit-box-sizing:content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
+.pf,
+.pf * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.nest-bf-in-pf .form-group {
+    margin-bottom:0px;
+}
+.logo-header-title-a{
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    color: #545b66;
+}
+.logo-header-title{
+    font: normal normal 20px/1 "actor",   'Trebuchet MS', Helvetica, sans-serif !important;
+    /*padding-left: 10px !important;*/
+    letter-spacing: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    padding-left: 12px;
+    padding-top: 23px;
+    margin-left: 10px;
+    border-left: solid #b1b4b8 1px;
+    height: 45px;
+}
+#layout-topbar #logo{
+    margin-left: 0 !important;
+}
+.wrapper-centroDatos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, 
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, 
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, 
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, 
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, 
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, 
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, 
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, 
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    box-sizing: border-box !important;
+}
+.form-control,
+.form-inline .form-control.datatable-filter-field {
+    box-sizing: border-box !important;
+}
+.table.dataTable.fixdatatable {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    display: block !important;
+}
+table.dataTable.fixdatatable th, table.dataTable.fixdatatable td {
+    white-space: normal;
+}
+
+div.noHead > .ui-datatable-tablewrapper {
+    overflow: hidden !important;
+    margin: 0 !important;
+}
+div.noHead .ui-datatable-tablewrapper td[role="gridcell"]{
+    padding: 2px 5px !important;
+}
+div.noHead.borderedTD .ui-datatable-tablewrapper td[role="gridcell"] > table{
+    border: 2px #000000 solid !important;
+}
+div.noHead table[role="grid"] > thead {
+    display:none !important;
+}
+div.noEmptyMessage table[role="grid"]  tbody > tr.ui-datatable-empty-message{
+    display:none !important;
+}
+tbody tr.empty{
+    display:none !important;
+}
+.noPadding{
+    padding: 0 !important;
+}
+table.rack tr td{
+    font-size: 1.1em !important;
+}
+
+.no-rounded{
+    border-radius: 0 !important;
+}
+.topBar {
+    filter: alpha(opacity=80) !important;
+    opacity:0.65 !important;
+    padding:50px 0 0 50px !important;
+    z-index: 1000 !important;
+    background-color: #b1bfc6 !important;
+}
+.waringBar{
+    text-align: center;
+    /*color: #EDA93D !important;*/
+    font-size: 24px !important;
+    background-color: #EDA93D !important;
+
+}
+.ui-growl{
+    min-width: 570px  !important;
+}
+.ui-growl-message{
+    min-width: 495px !important;
+}
+.ui-growl{
+    z-index: 10000 !important;
+}
+
+@media (max-width: 350px){
+    .logo-header-title{
+        display: none !important;
+    }
+}
+@media (max-width: 480px) {
+    .logo-header-title{
+        font: normal normal 12px/1 "actor",   'Trebuchet MS', Helvetica, sans-serif !important;
+        /*padding-left: 10px !important;*/
+        letter-spacing: 1px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        padding-left: 8px;
+        padding-top: 30px;
+        margin-left: 10px;
+        border-left: solid #b1b4b8 1px;
+        height: 45px;
+    }
+}
+@media (max-width: 965px) {
+    .logo-header-title{
+        padding-top: 20px;
+        height: 38px;
+    }
+    .logo-header-title-a {
+        height: 45px;
+        line-height: 45px;
+    }
+}

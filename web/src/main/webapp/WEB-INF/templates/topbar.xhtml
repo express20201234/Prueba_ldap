@@ -1,0 +1,36 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:form prependId="false">
+        <!-- TOPBAR START -->
+        <div id="layout-topbar">
+            <a href="#{request.contextPath}/" class="logo-header-title-a">
+                <h:graphicImage styleClass="no-rounded" name="images/logo.png" id="logo" library="default" />
+                <span class="logo-header-title">APOYO ADMINISTRATIVO</span>
+            </a>
+            <a id="topmenu-button" class="Animated1">
+                <em class="icon-list2"></em>
+            </a>
+            <ul id="top-menu">
+                <li>
+                    <a class="menulink Animated05"><em class="icon-settings"></em> <span>Opciones</span></a>
+                    <ul style="margin-left:-145px;">
+<!--                        <li>
+                            <a href="#" onclick="PF('cambioContraDialog').show();">
+                                <em class="fa fa-exclamation"></em> <span class="FontAdamantiumBold">Cambiar Contrase&#241;a</span>
+                            </a>
+                        </li>-->
+                        <li>
+                            <h:commandLink action="#{homeBackend.doLogout}">
+                                <em class="icon-lock-stroke Fs18 Fleft MarRight10"></em> <span class="FontAdamantiumBold">Salir</span>
+                            </h:commandLink>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- TOPBAR END -->
+    </h:form>    
+</ui:composition>

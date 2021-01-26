@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sv.gob.mh.dinafi</groupId>
+    <artifactId>project-marcacion</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Control de Marcacion</name>
+    <description>Control de Marcacion de DINAFI</description>
+    <url>http://safi.mh.gob.sv</url>
+    <organization>
+        <name>Ministerio de Hacienda</name>
+        <url>http://www.mh.gob.sv</url>
+    </organization>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Sonar Apoyo Administrativo -->
+        <sonar.login>75211bc90d8b1a998aac572f15bae5b343979999</sonar.login>
+        <sonar.host.url>http://almusi.mh.gob.sv:9000/sonar/</sonar.host.url>
+        <sonar.branch>${git.branch}</sonar.branch>
+    </properties>
+    <modules>
+        <module>model</module>
+        <module>web</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>almusi</id>
+            <url>http://almusi.mh.gob.sv:9580/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>almusi</id>
+            <url>http://almusi.mh.gob.sv:9580/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.3.0.603</version>
+                </plugin>
+            </plugins>
+        </pluginManagement> 
+    </build>
+    
+</project>

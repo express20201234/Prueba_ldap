@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <description>Apoyo Administrativo - Control de Marcacion</description>
+    <display-name>Apoyo Administrativo - Control de Marcacion</display-name>
+    
+    <distributable/>
+    
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <context-param>
+        <param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>net.bootsfaces.get_jqueryui_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>net.bootsfaces.get_bootstrap_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+        <param-value>2</param-value>
+        <!-- Should be -1 for production. -->
+    </context-param>
+    <context-param> 
+        <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name> 
+        <param-value>false</param-value> 
+    </context-param>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <!--        <param-value>omega</param-value>-->
+        <param-value>adamantium</param-value>
+    </context-param>
+    <context-param>
+        <param-name>primefaces.FONT_AWESOME</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!--PUSH-->
+    <context-param>
+        <param-name>org.omnifaces.ENABLE_SOCKET_ENDPOINT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!--JSF tuning-->
+    <context-param>
+        <param-name>com.sun.faces.autoCompleteOffOnViewState</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.sun.faces.enableViewStateIdRendering</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
+        <param-value>65535</param-value>
+        <!-- 64KB. -->
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.sun.faces.defaultResourceMaxAge</param-name>
+        <param-value>3628800000</param-value>
+        <!-- 6 weeks. -->
+    </context-param>
+    <context-param>
+        <param-name>org.omnifaces.FACES_VIEWS_PATH_ACTION</param-name>
+        <param-value>REDIRECT_TO_SCANNED_EXTENSIONLESS</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.primefaces.extensions.DELIVER_UNCOMPRESSED_RESOURCES</param-name>
+        <param-value>#{not(facesContext.application.projectStage eq 'Development')}</param-value>
+    </context-param>
+    
+    <mime-mapping>
+        <extension>ico</extension>
+        <mime-type>application/x-ico</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ttf</extension>
+        <mime-type>application/x-font-ttf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>application/x-font-woff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>application/x-font-woff2</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>eot</extension>
+        <mime-type>application/x-font-eot</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xhtml</extension>
+        <mime-type>application/xml</mime-type>
+    </mime-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>app/index.xhtml</welcome-file>
+    </welcome-file-list>
+   
+    <!-- Public Components -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Public Area</web-resource-name>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+            <url-pattern>/login/login.xhtml</url-pattern>
+            <url-pattern>/complete.xhtml</url-pattern>
+            <url-pattern>/errors/*</url-pattern>
+        </web-resource-collection>
+
+        <web-resource-collection>
+            <web-resource-name>Resources</web-resource-name>
+            <url-pattern>/resources/*</url-pattern>
+        </web-resource-collection>
+
+        <web-resource-collection>
+            <web-resource-name>FacesResources</web-resource-name>
+            <url-pattern>/faces/resources/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    
+    <!-- Restricted Constraint -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restricted Area</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ROLE_CTRL_MARCACION</role-name>
+        </auth-constraint>
+    </security-constraint>
+       
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login/login.xhtml</form-login-page>
+            <form-error-page>/login/login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <role-name>ROLE_CTRL_MARCACION</role-name>
+    </security-role>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/errors/expired.xhtml</location>
+    </error-page>    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errors/access-denied.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errors/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errors/error.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>503</error-code>
+        <location>/errors/error.xhtml</location>
+    </error-page>
+
+</web-app>

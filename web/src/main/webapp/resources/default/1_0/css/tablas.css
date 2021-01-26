@@ -1,0 +1,44 @@
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Para que cada 5 columnas se pase a otra nueva fila.*/
+.wrapper-area {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+  padding: 15px;
+}
+
+.wrapper-centroDatos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 15px;
+}
+
+.wrapper-gabinetes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+  padding: 15px;
+}
+
+.wrapper-ups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 15px;
+}
+
+.wrapper-componentes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 15px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+}

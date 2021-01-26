@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>CUSTOM-toNexus</actionName>
+        <displayName>toNexus</displayName>
+        <goals>
+            <goal>deploy:deploy-file</goal>
+            <goal>-Dmaven.test.skip=true</goal>
+        </goals>
+        <properties>
+            <generatePom>true</generatePom>
+            <repositoryId>nexus</repositoryId>
+            <file>target/${project.artifactId}-${project.version}.jar</file>
+            <pomFile>pom.xml</pomFile>
+            <url>http://almusi.mh.gob.sv:9580/nexus/content/repositories/snapshots</url>
+        </properties>
+    </action>
+</actions>
