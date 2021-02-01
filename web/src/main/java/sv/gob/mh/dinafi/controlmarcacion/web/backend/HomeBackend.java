@@ -19,8 +19,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.omnifaces.util.Faces;
-import sv.gob.mh.common.querydsl.Filter;
-import sv.gob.mh.common.querydsl.Sort;
+
+import sv.gob.mh.common.dto.Filter;
+import sv.gob.mh.common.dto.Page;
+import sv.gob.mh.common.dto.Sort;
+
 import sv.gob.mh.dinafi.controlmarcacion.model.CtrlUsuario;
 import sv.gob.mh.dinafi.controlmarcacion.model.CtrlMarcacion;
 import sv.gob.mh.dinafi.controlmarcacion.web.common.AbstractLazyModel;
@@ -68,7 +71,7 @@ public class HomeBackend implements Serializable {
             customFilters.add(new Filter("id", user.getId()));
             lastConnections.setCustomFilters(customFilters);
             Set<Sort> sortFirst = new HashSet<>();
-            sortFirst.add(new Sort("marcacion", Sort.SortDirection.DESCENDING, null));
+            sortFirst.add(new Sort("marcacion", Sort.SortDirection.DESC, null));
             lastConnections.setSortFirst(sortFirst);
 
         }

@@ -17,9 +17,9 @@ import org.primefaces.model.SortOrder;
 
 import sv.gob.mh.common.querydsl.AbstractService;
 import sv.gob.mh.common.querydsl.CallBack;
-import sv.gob.mh.common.querydsl.Filter;
-import sv.gob.mh.common.querydsl.Page;
-import sv.gob.mh.common.querydsl.Sort;
+import sv.gob.mh.common.dto.Filter;
+import sv.gob.mh.common.dto.Page;
+import sv.gob.mh.common.dto.Sort;
 
 
 @Getter
@@ -79,14 +79,14 @@ public class AbstractLazyModel<T, ID extends Serializable>
                 for (String sort : arrsorts) {
                     Sort osort = new Sort(sort.trim(),
                             SortOrder.ASCENDING == sortOrder
-                                    ? Sort.SortDirection.ASCENDING
-                                    : Sort.SortDirection.DESCENDING, null);
+                                    ? Sort.SortDirection.ASC
+                                    : Sort.SortDirection.DESC, null);
                     sortSet.add(osort);
                 }
             }
         }
         Page<T> page = page(first, pageSize, filters, sortSet);
-        setRowCount((int) page.getTotal());
+        setRowCount((int) page.getTotalRecords());
         if (afterLoad != null) {
             afterLoad.setItem((List<T>) page.getContent());
             try {
@@ -113,13 +113,13 @@ public class AbstractLazyModel<T, ID extends Serializable>
                 sortSet.add(
                         new Sort(sortMeta.getSortField(),
                                 SortOrder.ASCENDING == sortMeta.getSortOrder()
-                                ? Sort.SortDirection.ASCENDING
-                                : Sort.SortDirection.DESCENDING, null)
+                                ? Sort.SortDirection.ASC
+                                : Sort.SortDirection.DESC, null)
                 );
             }
         }
         Page<T> page = page(first, pageSize, filters, sortSet);
-        setRowCount((int) page.getTotal());
+        setRowCount((int) page.getTotalRecords());
         return (List<T>) page.getContent();
     }
 
@@ -133,7 +133,7 @@ public class AbstractLazyModel<T, ID extends Serializable>
                         filter.getKey(), // attribute
                         filter.getValue(), // value 
                         null, // value2 
-                        Filter.FilterOperator.CONTAINS,
+                        Filter.FilterOperator.LIKE,
                         !isAny()));
             }
         }
