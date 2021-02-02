@@ -28,16 +28,6 @@
         <module>web</module>
     </modules>
 
-    <distributionManagement>
-        <repository>
-            <id>almusi</id>
-            <url>http://almusi.mh.gob.sv:9580/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>almusi</id>
-            <url>http://almusi.mh.gob.sv:9580/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
     <build>
         <pluginManagement>
             <plugins>
