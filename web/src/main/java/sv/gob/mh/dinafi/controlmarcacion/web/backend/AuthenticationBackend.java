@@ -22,6 +22,7 @@ import sv.gob.mh.dinafi.controlmarcacion.model.CtrlMarcacion;
 import sv.gob.mh.dinafi.controlmarcacion.model.CtrlUsuario;
 
 import static sv.gob.mh.dinafi.controlmarcacion.web.backend.CrudBackend.TAG_ERROR;
+import static sv.gob.mh.dinafi.controlmarcacion.web.backend.CrudBackend.TAG_INFO;
 import sv.gob.mh.dinafi.controlmarcacion.web.ldap.MailBox;
 import sv.gob.mh.dinafi.controlmarcacion.web.ldap.MailUtil;
 import sv.gob.mh.dinafi.controlmarcacion.web.ldap.UserRepository;
@@ -70,6 +71,15 @@ public class AuthenticationBackend implements Serializable {
             Principal principal = Faces.getRequest().getUserPrincipal();
 
             if (principal != null && principal.getName() != null) {
+
+                if (!isAuthorized()) {
+                    Faces.getRequest().logout();
+                    String message = "El usuario (" + username + ") no esta autorizado para utilizar el Sistema de Control de Marcaci&#243;n.";
+                    Messages.create(TAG_INFO).detail(message, (Object[]) null).error().add();
+                    Faces.validationFailed();
+                    return;
+                }
+
                 CtrlUsuario user = aprovisionarUsuario(principal.getName());
                 if (isAdministrador(user)) {
                     Faces.getExternalContext().redirect(
@@ -88,7 +98,7 @@ public class AuthenticationBackend implements Serializable {
                 throw new ServletException("Credenciales invalidas.");
             }
         } catch (IOException | ServletException ex) {
-            log.log(Level.SEVERE, null, ex);
+            //log.log(Level.SEVERE, null, ex);
             String message = ex.getMessage() != null && ex.getMessage().toUpperCase().contains("UT010031")
                     ? "Credenciales no v&#225;lidas o puede ser que el usuario est&#233; bloqueado"
                     : ex.getMessage();
@@ -236,6 +246,10 @@ public class AuthenticationBackend implements Serializable {
     private boolean isAdministrador(CtrlUsuario user) {
         CtrlAdministrador admin = administradorService.findByUserId(user.getId());
         return admin != null;
+    }
+
+    private boolean isAuthorized() {
+        return Faces.getRequest().isUserInRole("ROLE_CTRL_MARCACION");
     }
 
 }
